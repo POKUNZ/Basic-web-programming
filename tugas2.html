@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<head>
+    <title>Tugas 2 - Nilai Akhir dan Grade</title>
+</head>
+    <style>
+body {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('BACKGROUUND.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: #ffffff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+
+.btn-back-hub {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background-color: #1db954; 
+  color: #000000;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.95rem;
+  border-radius: 25px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: all 0.2s ease;
+  margin-bottom: 20px;
+}
+
+.btn-back-hub:hover {
+  background-color: #1ed760;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(29, 185, 84, 0.4);
+}
+    </style>
+<body>
+
+
+<a href="United.html" style="
+  display: inline-block;
+  margin: 15px;
+  padding: 10px 18px;
+  background-color: #1db954;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 20px;
+  font-family: sans-serif;
+">
+  &larr; Kembali ke United Hub
+</a>
+
+
+<script>
+    function hitungNilaiAkhir(tugas, uts, uas) {
+        return (Number(tugas) * 0.4) + (Number(uts) * 0.25) + (Number(uas) * 0.35);
+    }
+
+    function getGrade(nilai) {
+        if (nilai >= 80) {
+            return "A";
+        } else if (nilai >= 75) {
+            return "A-";
+        } else if (nilai >= 66) {
+            return "B";
+        } else if (nilai >= 60) {
+            return "B-";
+        } else if (nilai >= 55) {
+            return "C+";
+        } else if (nilai >= 40) {
+            return "C";
+        } else {
+            return "E";
+        }
+    }
+
+    jumlahMhs = window.prompt("Jumlah Mahasiswa");
+
+    for (i = 1; i <= jumlahMhs; i++) {
+        nama = window.prompt('Nama');
+        tugas = window.prompt('Tugas');
+        uts = window.prompt('UTS');
+        uas = window.prompt('UAS');
+
+        nilaiAkhir = hitungNilaiAkhir(tugas, uts, uas);
+        grade = getGrade(nilaiAkhir);
+
+        document.write("<br /><br />" + i + ". " + nama + "<br />");
+        document.write("Tugas: " + tugas);
+        document.write("<br />UTS: " + uts);
+        document.write("<br />UAS: " + uas);
+        document.write("<br />Nilai Akhir: " + nilaiAkhir.toFixed(2));
+        document.write("<br />Grade: " + grade);
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,375 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #000;
+  color: #fff;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Video Background Fullscreen */
+#bg-video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -2;
+  object-fit: cover;
+}
+
+/* Overlay Transparan Gelap */
+.video-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: -1;
+}
+
+/* Container Utama */
+.hub-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* Header */
+.main-header {
+  background: rgba(18, 18, 18, 0.75);
+  padding: 20px 30px;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.main-header i {
+  font-size: 2.5rem;
+  color: #1db954;
+}
+
+.main-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+/* Section Group */
+.album-section h2 {
+  font-size: 1.1rem;
+  color: #1db954;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Grid Kartu Album / Tombol */
+.album-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 16px;
+}
+
+.album-card {
+  background: rgba(18, 18, 18, 0.75);
+  border-radius: 10px;
+  padding: 14px;
+  text-decoration: none;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.25s ease;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+}
+
+.album-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.album-card:hover {
+  background: rgba(29, 185, 84, 0.25);
+  border-color: #1db954;
+  transform: translateY(-5px);
+}
+
+.album-cover {
+  width: 100%;
+  aspect-ratio: 1;
+  background: #282828;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  color: #b3b3b3;
+}
+
+.album-card:hover .album-cover {
+  color: #1db954;
+  background: #181818;
+}
+
+.album-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.album-card.highlight .album-cover {
+  background: #1db954;
+  color: #000;
+}
+
+#start-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.overlay-btn {
+  background: #1db954;
+  color: #000;
+  padding: 16px 28px;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 4px 15px rgba(29, 185, 84, 0.4);
+}
+
+.wiki-section {
+  margin-top: 2rem;
+}
+
+.wiki-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.wiki-content p {
+  line-height: 1.6;
+  margin-bottom: 1.2rem;
+  color: #e0e0e0;
+}
+
+.wiki-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.95rem;
+  color: #b3b3b3;
+}
+
+.stat-item i {
+  color: #1db954; /* Warna hijau khas Spotify */
+  width: 20px;
+  text-align: center;
+}
+
+.stat-item strong {
+  color: #fff;
+}
+
+/* Custom Spotify / Industrial Style Enhancements */
+
+/* Container padding agar tidak tertutup Player Bar di bawah */
+.hub-container {
+  padding-bottom: 90px;
+}
+
+/* Header Quick Stats Badge */
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.header-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.stats-badge-container {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.badge {
+  background: rgba(29, 185, 84, 0.2);
+  border: 1px solid #1db954;
+  color: #1db954;
+  padding: 0.35rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* Floating Audio Control (Top Right) */
+.audio-control-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 99;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(5px);
+}
+
+.audio-control-btn:hover {
+  background: #1db954;
+  color: #000;
+  transform: scale(1.08);
+}
+
+/* Mini Wiki Section Styling */
+.wiki-section {
+  margin-top: 2.5rem;
+}
+
+.wiki-card {
+  background: rgba(18, 18, 18, 0.75);
+  backdrop-filter: blur(12px);
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.wiki-content p {
+  line-height: 1.6;
+  margin-bottom: 1.2rem;
+  color: #d1d1d1;
+  font-size: 0.95rem;
+}
+
+.wiki-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+  color: #b3b3b3;
+}
+
+.stat-item i {
+  color: #1db954;
+  width: 20px;
+  text-align: center;
+}
+
+/* Bottom Sticky Spotify Player Bar */
+.spotify-player-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  background: #000000;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  z-index: 98;
+  box-sizing: border-box;
+}
+
+.player-track-info {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.player-thumb {
+  width: 48px;
+  height: 48px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.player-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.track-name {
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.artist-name {
+  color: #b3b3b3;
+  font-size: 0.8rem;
+}
+
+.player-controls button {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.player-controls button:hover {
+  color: #1db954;
+  transform: scale(1.1);
+}

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vito Belvino - Tugas Hub</title>
+  <link rel="stylesheet" href="united.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Overlay Start Button -->
+  <div id="start-overlay" onclick="startAudio()">
+    <div class="overlay-btn">
+      <i class="fa-brands fa-spotify"></i>
+      <span>START HUB</span>
+    </div>
+  </div>
+
+  <!-- Background Video / Audio -->
+  <video id="bg-video" loop style="position: fixed; right: 0; bottom: 0; min-width: 100%; min-height: 100%; z-index: -2; object-fit: cover;">
+    <source src="korn_cold.mp3" type="audio/mp3">
+    <source src="Korn - Cold (Official Live Video) - (1080p).mp4" type="video/mp4">
+  </video>
+
+  <div class="video-overlay"></div>
+
+  <div class="hub-container">
+    <header class="main-header">
+      <div class="header-title">
+        <i class="fa-brands fa-spotify"></i>
+        <h1>VBA - Tugas Hub</h1>
+      </div>
+      
+      <!-- Quick Stats Widget -->
+      <div class="stats-badge-container">
+        <span class="badge"><i class="fa-solid fa-compact-disc"></i> 7 Latihan</span>
+        <span class="badge"><i class="fa-solid fa-record-vinyl"></i> 2 Tugas</span>
+      </div>
+    </header>
+
+    <main class="content-sections">
+      <!-- Section Latihan -->
+      <section class="album-section">
+        <h2><i class="fa-solid fa-compact-disc"></i> Album Latihan</h2>
+        <div class="album-grid">
+          <a href="latihan1.html" class="album-card">
+            <img src="RIGHTNOW.jpg" alt="Latihan 1" class="album-thumb">
+            <span class="album-title">Latihan 1</span>
+          </a>
+          <a href="latihan2.html" class="album-card">
+            <img src="BLIND.jpg" alt="Latihan 2" class="album-thumb">
+            <span class="album-title">Latihan 2</span>
+          </a>
+          <a href="latihan3.html" class="album-card">
+            <img src="HERE.jpg" alt="Latihan 3" class="album-thumb">
+            <span class="album-title">Latihan 3</span>
+          </a>
+          <a href="latihan4.html" class="album-card">
+            <img src="ISSUE.jpg" alt="Latihan 4" class="album-thumb">
+            <span class="album-title">Latihan 4</span>
+          </a>
+          <a href="latihan5.html" class="album-card">
+            <img src="ADIDA.jpg" alt="Latihan 5" class="album-thumb">
+            <span class="album-title">Latihan 5</span>
+          </a>
+          <a href="latihan6.html" class="album-card">
+            <img src="FREAK.jpg" alt="Latihan 6" class="album-thumb">
+            <span class="album-title">Latihan 6</span>
+          </a>
+          <a href="latihan7.html" class="album-card">
+            <img src="TWISTED.jpg" alt="Latihan 7" class="album-thumb">
+            <span class="album-title">Latihan 7</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Section Tugas -->
+      <section class="album-section">
+        <h2><i class="fa-solid fa-record-vinyl"></i> Album Tugas</h2>
+        <div class="album-grid">
+          <a href="tugas1.html" class="album-card highlight">
+            <img src="Nothing.jpg" alt="Tugas 1" class="album-thumb">
+            <span class="album-title">Tugas 1</span>
+          </a>
+          <a href="tugas2.html" class="album-card highlight">
+            <img src="HEALING.jpg" alt="Tugas 2" class="album-thumb">
+            <span class="album-title">Tugas 2</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Section About / Mini Wiki Korn -->
+      <section class="album-section wiki-section">
+        <h2><i class="fa-solid fa-circle-info"></i> Featured Artist: Korn (KoЯn)</h2>
+        <div class="wiki-card">
+          <div class="wiki-content">
+            <p>
+              <strong>Korn</strong> (ditulis sebagai <strong>KoЯn</strong>) adalah band nu metal asal Bakersfield, California, AS yang dibentuk pada tahun 1993. Mereka dikenal luas sebagai perintis subgenre <em>nu metal</em> dengan ciri khas nada gitar 7-string tuning rendah, bas perkusif, serta vokal ekspresif.
+            </p>
+            <div class="wiki-stats">
+              <div class="stat-item">
+                <i class="fa-solid fa-users"></i>
+                <span><strong>Anggota:</strong> Jonathan Davis, James "Munky" Shaffer, Brian "Head" Welch, Ray Luzier</span>
+              </div>
+              <div class="stat-item">
+                <i class="fa-solid fa-music"></i>
+                <span><strong>Genre:</strong> Nu Metal, Alternative Metal</span>
+              </div>
+              <div class="stat-item">
+                <i class="fa-solid fa-compact-disc"></i>
+                <span><strong>Hits Populer:</strong> Freak on a Leash, Blind, Falling Away from Me, Cold, Got the Life</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Sticky Spotify Bottom Player Bar -->
+  <footer class="spotify-player-bar">
+    <div class="player-track-info">
+      <img src="Nothing.jpg" alt="Now Playing Track" class="player-thumb">
+      <div class="player-meta">
+        <span class="track-name">Cold</span>
+        <span class="artist-name">Korn - The Nothing</span>
+      </div>
+    </div>
+
+    <div class="player-timer">
+      <i class="fa-solid fa-compact-disc fa-spin"></i>
+      <span id="current-time">00:00</span> / <span id="total-duration">00:00</span>
+    </div>
+  </footer>
+
+  <script>
+    var video = document.getElementById("bg-video");
+    var currentTimeEl = document.getElementById("current-time");
+    var totalDurationEl = document.getElementById("total-duration");
+
+    function startAudio() {
+      video.muted = false; 
+      video.play(); 
+      document.getElementById("start-overlay").style.display = "none";
+    }
+
+    function formatTime(seconds) {
+      if (isNaN(seconds)) return "00:00";
+      var mins = Math.floor(seconds / 60);
+      var secs = Math.floor(seconds % 60);
+      if (mins < 10) mins = "0" + mins;
+      if (secs < 10) secs = "0" + secs;
+      return mins + ":" + secs;
+    }
+
+    video.addEventListener("timeupdate", function() {
+      currentTimeEl.innerText = formatTime(video.currentTime);
+      totalDurationEl.innerText = formatTime(video.duration);
+    });
+  </script>
+</body>
+</html>
